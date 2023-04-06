@@ -1,6 +1,5 @@
 package com.example.demo.controllers;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +14,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.example.demo.models.Categoria;
+import com.example.demo.models.Fornecedor;
 import com.example.demo.models.Produto;
+import com.example.demo.repositories.CategoriaRepository;
+import com.example.demo.repositories.FornecedorRepository;
 import com.example.demo.repositories.ProdutoRepository;
 
 @Controller
@@ -25,6 +27,11 @@ public class ProdutoController {
 	@Autowired //Injeção de dependências
 	private ProdutoRepository produtoRepository;
 	// Dessa forma nós podemos utilizar os métodos do repository sem instanciar
+	@Autowired
+	private CategoriaRepository categoriaRepository;
+	
+	@Autowired
+	private FornecedorRepository fornecedorRepository;
 	
 	@GetMapping("")
 	public ModelAndView get() {
@@ -44,10 +51,19 @@ public class ProdutoController {
 	}
 	
 	@GetMapping("/create") // Mapeia a URL, em seguida executa o método
-	public String create() {
+	public ModelAndView create() {
+		ModelAndView model = new ModelAndView("produto/create");
+		
+			// No caso abaixo estamos injetando no produto listas de outros objetos.
+		List<Categoria> listCategoria = categoriaRepository.findAll();
+		List<Fornecedor> listFornecedor = fornecedorRepository.findAll();
+		
+			// Agora nós utilizamos o model para passar 2 objetos diferentes
+		model.addObject("categorias", listCategoria);
+		model.addObject("fornecedores", listFornecedor);
 		
 		// Depois de rodar todo o método ele retorna para carregar a página
-		return "produto/create"; // Retorna o path da página html para ser executada
+		return model; // Retorna o path da página html para ser executada
 	}
 	
 	@PostMapping("/create") // Pega os dados inseridos na página para utilizar no método

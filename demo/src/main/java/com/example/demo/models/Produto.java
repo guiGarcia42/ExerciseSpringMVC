@@ -12,7 +12,20 @@ public class Produto {
 	@GeneratedValue(strategy=GenerationType.AUTO) //Auto increment do ID
 	private Long id;
 	private String nome;
+	private Long idCategoria, idFornecedor;
 	
+	public Long getIdCategoria() {
+		return idCategoria;
+	}
+	public void setIdCategoria(Long idCategoria) {
+		this.idCategoria = idCategoria;
+	}
+	public Long getIdFornecedor() {
+		return idFornecedor;
+	}
+	public void setIdFornecedor(Long idFornecedor) {
+		this.idFornecedor = idFornecedor;
+	}
 	public Long getId() {
 		return id;
 	}
