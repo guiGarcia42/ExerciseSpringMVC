@@ -87,5 +87,22 @@ public class ProdutoController {
 		return categoria;
 	}
 	
+	@GetMapping("/categoria/{id}")
+	public List<Produto> getProdutoByCategoria(@PathVariable("id") Long idCategoria) {
+		
+		List<Produto> produtos = produtoRepository.findByIdCategoria(idCategoria);
+		
+		return produtos;
+	}
+	
+	@GetMapping("/delete/{id}")
+	public String delete(@PathVariable("id") Long id) {
+		
+		produtoRepository.deleteById(id);
+		
+		
+		return "redirect:/produto";
+	}
+	
 	
 }

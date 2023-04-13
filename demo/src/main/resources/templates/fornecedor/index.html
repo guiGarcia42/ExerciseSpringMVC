@@ -51,6 +51,7 @@
 				<th>Nome</th>
 				<th>Endereço</th>
 				<th>Telefone</th>
+				<th>Deletar</th>
 				
 			</thead>
 			<tbody>
@@ -59,6 +60,7 @@
 					<td th:text="${fornecedor.getNome()}"></td>
 					<td th:text="${fornecedor.getEndereco()}"></td>
 					<td th:text="${fornecedor.getTelefone()}"></td>
+					<td><a th:href="@{/fornecedor/delete/{fornecedorId} (fornecedorId = ${fornecedor.id})}">Deletar</a></td>
 				</tr>
 			</tbody>
 		</table>

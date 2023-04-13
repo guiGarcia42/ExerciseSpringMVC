@@ -12,7 +12,7 @@ public class Fornecedor {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 	private String nome, endereco;
-	private Integer telefone;
+	private String telefone;
 	
 	public Long getId() {
 		return id;
@@ -32,10 +32,10 @@ public class Fornecedor {
 	public void setEndereco(String endereco) {
 		this.endereco = endereco;
 	}
-	public Integer getTelefone() {
+	public String getTelefone() {
 		return telefone;
 	}
-	public void setTelefone(Integer telefone) {
+	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
 	

@@ -49,12 +49,14 @@
 			<thead>
 				<th>Id</th>
 				<th>Descrição</th>
+				<th>Deletar</th>
 				
 			</thead>
 			<tbody>
 				<tr th:each="categoria : ${categorias}">
 					<td th:text="${categoria.getId()}"></td>
 					<td th:text="${categoria.getDescricao()}"></td>
+					<td><a th:href="@{/categoria/delete/{categoriaId} (categoriaId = ${categoria.id})}">Deletar</a></td>
 				</tr>
 			</tbody>
 		</table>
