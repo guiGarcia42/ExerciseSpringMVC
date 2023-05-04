@@ -8,11 +8,21 @@ import jakarta.persistence.Id;
 @Entity
 public class Categoria {
 	
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Integer id;
+	@Id //primary key
+	@GeneratedValue(strategy=GenerationType.AUTO) //auto increment
+	private Integer id; 
 	private String descricao;
+	private String nome; 
 	
+	public String getNome() {
+		return nome;
+	}
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
 	public int getId() {
 		return id;
 	}
@@ -24,7 +34,5 @@ public class Categoria {
 	}
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
-	}
-	
-	
+	} 
 }

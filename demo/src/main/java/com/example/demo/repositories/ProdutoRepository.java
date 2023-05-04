@@ -8,12 +8,14 @@ import org.springframework.stereotype.Repository;
 
 import com.example.demo.models.Produto;
 
-@Repository
-public interface ProdutoRepository extends JpaRepository<Produto, Long>{
-	// JPARepository mapeia a classe produto e a primary key e extende métodos para dar comando na base
-	// O repository implementa os métodos para as classes usarem
-
-	@Query(value = "select id, id_categoria, nome, id_fornecedor from produto where id_categoria = ?1;", nativeQuery = true) 
+@Repository // Define como uma Repository
+public interface ProdutoRepository extends JpaRepository<Produto, Long> {
+		// JPARepository mapeia a classe produto e a primary key e extende métodos para dar comando na base
+		// O repository implementa os métodos para as classes usarem
+	
+	@Query(value="select id, id_categoria, nome, id_fornecedor from produto where id_categoria = ?;", nativeQuery = true)
 	// a interrogação vai ser subtituida no comando
-	List<Produto> findByIdCategoria(Long id);
+	List<Produto> findByIdCategoria(Integer idCategoria);
 }
+
+
